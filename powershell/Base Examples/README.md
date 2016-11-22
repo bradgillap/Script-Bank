@@ -1,7 +1,10 @@
 <snippet>
   <content>
 
-# Script-Bank
+# Base Examples
+Powershell examples for quickly pulling core concepts into your scripts. The goal of this section is to show the language in quick easily digestible pieces depending on the subject.
+
+## Script-Bank
 The script bank is a place to store useful scripts. Idea shamelessly stolen from Ryan Morris. The difference is that the Script-Bank
 is better organized with scripts from many places while [Ryans Script-Depot](https://github.com/hackmods/Script-Depot) is mostly things
 we have developed ourselves. All license information and attributions should be included inside each script.
