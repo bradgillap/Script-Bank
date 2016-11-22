@@ -34,3 +34,5 @@ $comp = "L1", "L2", "L2", "L3", "L4"
 
 $comp | Where-Object { $_ -like "*3*"} | 
 measure-object
+
+#test
