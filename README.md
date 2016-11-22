@@ -18,17 +18,18 @@ As scripts don't often fall out of date, this should be useful for a long time b
 
 ## History
 
-1. November 22 2016: This repo is created.
-0. 2015 [Ryans Script-Depot](https://github.com/hackmods/Script-Depot) begins tracking scripts we use.
+- November 22 2016: This repo is created.
+- 2015 [Ryans Script-Depot](https://github.com/hackmods/Script-Depot) begins tracking scripts we use.
 
 ## Credits
-Ryan Morris (Always supporting his peers.)
-Bradley Gillap (I organize this.)
-Bryan Houghs (Contributer)
+- Ryan Morris (Always supporting his peers.)
+- Bradley Gillap (I organize this.)
+- Bryan Houghs (Contributer)
 
 ## License
 
-This applies to scripts I've written which are clearly marked. If a script displays a different license then please follow that license.
+This applies to scripts I've written which are clearly marked. If a script displays a different license then please follow that license. 
+
 
 Copyright 2016 Bradley Gillap
 
