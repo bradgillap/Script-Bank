@@ -28,8 +28,7 @@ As scripts don't often fall out of date, this should be useful for a long time b
 
 ## License
 
-This applies to scripts I've written which are clearly marked. If a script displays a different license then please follow that license. 
-
+If a script displays a different license then please follow that license. 
 
 Copyright 2016 Bradley Gillap
 
