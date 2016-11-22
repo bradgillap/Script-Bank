@@ -1,0 +1,3 @@
+﻿#Environmental Variables
+
+$host
