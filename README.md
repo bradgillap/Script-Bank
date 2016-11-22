@@ -15,6 +15,7 @@ As scripts don't often fall out of date, this should be useful for a long time b
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 6. Don't steal code and follow whatever license guidelines for attribution or sharing.
+
 ## History
 
 November 22 2016: This repo is created.
@@ -24,6 +25,7 @@ November 22 2016: This repo is created.
 Ryan Morris (Always supporting his peers.)
 Bradley Gillap (I organize this.)
 Bryan Houghs (Contributer)
+
 ## License
 
 This applies to scripts I've written which are clearly marked. If a script displays a different license then please follow that license.
