@@ -18,8 +18,8 @@ As scripts don't often fall out of date, this should be useful for a long time b
 
 ## History
 
-November 22 2016: This repo is created.
-2015 [Ryans Script-Depot](https://github.com/hackmods/Script-Depot) begins tracking scripts we use.
+1. November 22 2016: This repo is created.
+0. 2015 [Ryans Script-Depot](https://github.com/hackmods/Script-Depot) begins tracking scripts we use.
 
 ## Credits
 Ryan Morris (Always supporting his peers.)
