@@ -1,45 +1,26 @@
 ﻿# For loop
 
-for($i=0; $i -lt 10; $i++) {
-
+for($i=0; $i -lt 10; $i++) 
+{
+	#content
 }
 
 # While loop
+
 $i = 0
-while($i -lt 10) {
-
+while($i -lt 10) 
+{
+	#content
 }
 
+# Foreach
 
-# forward only loop. Goes through each line and lets you work with things like $machines.column
-$machines = Import-Csv C:\Users\Administrator\Desktop\machines.txt
-
-
-foreach($m in $machines) {
-
-    $manu = $m.manufacturer.Substring(0,1)
-    $model = $m."model#"
-    Write-Host "$manu$model"
-
+foreach($something in $array) 
+{
+	#content
 }
 
+# Do While
 
-
-#LOOKS REPLACE FILE.
-
-cls
-
-$illegalChars = '/','\','*',':','?','"','>','<','|'
-
-[string]$file = 'exmaple/\'
-
-foreach ($illegalcharacter in $illegalChars) {
-    
-    if($file.Contains($illegalcharacter)) 
-        {
-           $file = $file.Replace($illegalcharacter,"")
-    }
-}
-
-
-write-host $file
+$i = 7 
+Do { $i; $i +=7 } While ($i -le 85)
