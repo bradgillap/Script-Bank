@@ -1,0 +1,1 @@
+ping -v -f -s 0 -i 0.04 nyan.sprocketfox.io
