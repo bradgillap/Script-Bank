@@ -14,3 +14,10 @@ It takes the console log of drawing with p5.js position for x and y, and then se
 
 
 
+To run on the command line run:
+
+server.js
+
+Then connect to localhost with two browsers on port 3000.
+
+you should be able to draw on the canvas.
