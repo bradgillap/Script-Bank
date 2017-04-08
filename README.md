@@ -6,7 +6,7 @@ The script bank is a place to store useful scripts. Idea shamelessly stolen from
 is better organized with scripts from many places while [Ryans Script-Depot](https://github.com/hackmods/Script-Depot) is mostly things
 we have developed ourselves. All license information and attributions should be included inside each script.
 ## Usage
-As scripts don't often fall out of date, this should be useful for a long time but do check the time stamps of when each file was updated. 
+As scripts don't often fall out of date, this should be useful for a long time but please check the time stamps of when each file was updated. 
 
 ## Contributing
 1. Fork it!
