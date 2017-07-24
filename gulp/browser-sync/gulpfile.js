@@ -1,7 +1,15 @@
 // a sane browsersync gulp file for mortals.
+// npm install commands.
+// npm install gulp --save-dev
+// npm install browser-sync -g
+// npm install gulp-clean-css --save-dev
+
+// to shrink css on cmd run: gulp minify-css
+
 
 var gulp = require('gulp');
 var bs = require('browser-sync').create();
+let cleanCSS = require('gulp-clean-css');
 
 gulp.task('browser-sync', function() {
     bs.init({
@@ -13,3 +21,9 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('default', ["browser-sync"]); //initiate the task above.
+
+gulp.task('minify-css', () => {
+  return gulp.src('css/*.css')
+    .pipe(cleanCSS({compatibility: '*'}))  //* designates browser version. see https://www.npmjs.com/package/clean-css#compatibility-modes
+    .pipe(gulp.dest('dist/css'));
+});
