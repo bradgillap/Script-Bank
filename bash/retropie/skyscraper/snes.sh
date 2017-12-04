@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Requires https://github.com/muldjord/skyscraper
+
 #Set options
 
 CONSOLE="snes"
