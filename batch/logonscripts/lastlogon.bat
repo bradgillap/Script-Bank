@@ -1,0 +1,1 @@
+echo %date%,%time%,%username%,logon,%computername% >> \\hostname\folder\tracking\logons.csv
