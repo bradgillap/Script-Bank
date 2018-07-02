@@ -114,7 +114,9 @@ do
 					choco upgrade treesizefree -y
 					choco upgrade winscp -y
 					choco upgrade audacity -y
-
+					choco upgrade googlechrome -y
+					choco upgrade chocolatey-core.extension -y
+					
 					Write-Host "Finished!" -BackgroundColor Green -ForegroundColor White
 					Read-Host "Press ENTER"
 
@@ -136,7 +138,7 @@ do
 					#choco upgrade inkscape -y
 					#choco upgrade filezilla -y
 					#choco upgrade paint.net -y
-					#choco upgrade gimp -y
+					choco upgrade gimp -y
 					#choco upgrade virtualbox -y
 			 
             } '5' {
