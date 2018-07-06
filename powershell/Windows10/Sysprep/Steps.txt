@@ -1,0 +1,7 @@
+1. Install windows 
+	CTRL+SHIFT+F3 at region screen to drop to audit mode
+	Install virtualbox additions
+2. Change local GPO's
+3. Remove Windows Apps
+4. Install libraries, fonts, applications, theme, tasks, msconfig
+5. Windows System Image Deployment, create answerfile, runoncescript, 

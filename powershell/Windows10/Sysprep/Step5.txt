@@ -1,0 +1,63 @@
+1 windowsPE
+2 offline Servicing
+3 generalize 
+4 specialize
+	amd64_Microsoft-Windows-Deployment_neutral
+		ExtendOSPartition: true
+	amd64_Microsoft-Windows-Shell-Setup_neutral
+		Computername
+		copyprofile
+		OEMName
+		RegisteredOrganization
+		RegisteredOwner
+		TimeZone: Eastern Standard Time
+		
+		OEMInformation
+			Logo
+			Manufacturer
+			SupportHours
+			Phone
+			Provider
+			Support URL
+5 audit system
+	amd64_Microsoft-Windows-PnpCustomizationsNonWinPE_Neutral
+		DriverPaths
+6 audit user
+7 oobeSystem
+	amd64_Microsoft-Windows-International-Core_neutral
+		InputLocale: 0409:00000409
+		SystemLcale: EN-CA
+		UILanguage: EN-CA
+		UILanguageFallback: EN-CA
+		UserLocale: EN-CA
+
+amd64_Microsoft-Windows-Shell-Setup_neutral
+	OOBE
+		HideEULAPage: true
+		HideLocalAccountScreen: true
+		HideOEMRegistrationScreen: true
+		HideOnlineAccountScreens: true
+		HideWirelessSetupinOOBE: true
+		NetworkLocation: Work
+		ProtectYourPC: 1
+		SkipMachineOOBE: true
+		skipUserOOBE: true
+		unattendEnableRetailDemo: false
+	LocalAccounts
+		LocalAccount
+			create accounts
+
+Mconfig turn off stuff.
+
+Task Scheduler – Turnoff/Disable
+	Google Update
+	Flash Update
+	Adobe update
+	Java Update
+	Customer Experience
+	Application Experience
+
+
+
+Seal
+sysprep.exe /generalize /oobe /shutdown /unattend:C:\customize\customize.xml

@@ -1,0 +1,39 @@
+Local GPO's
+
+Disable Cortana
+	Computer Configuration\Administrative Templates\Windows Components\Search\Allow Cortana
+
+Disable Consumer Experiences
+	Computer Config\Admin Templates\Windows Components\Cloud Content\Turn off Microsoft Consumer 		Experiences = Enabled
+
+Disable Windows Tips
+	Computer Config\Admin Templates\Windows Components\Cloud Content\Don’t show windows Tips = 	Enabled
+
+Advertising	
+	Computer Config\Admin Templates\System\User Profiles\Turn off Advertising ID = Off
+
+Feedback
+	Window Settings\Privacy\Feedback & diagnostics – Windows should ask for my feedback – Never
+
+Autoplay
+	Computer Config\Admin templates\Windows Components\Autoplay Policies
+	Turn Off Autoplay – Enabled - All Drives
+	Computer Config\Admin Templates\Windows Components\Internet Explorer
+	Enable – Prevent Participation in the Customer Experience Improvement Program
+	Prevent Changing Proxy Settings - enable
+	Prevent running first run wizard – enabled – Go Directly to home page
+	Turn off Add-on Perf. Mods - enable
+
+Config-Admin Templates-System-Internet Communication Management-Internet Communications Settings
+	Turn off Customer Experience Program
+	Turn off Windows Update driver searching
+	Turn off Internet File Association service
+	Turn off access to the Store
+
+Make windows default printing work like before
+	Regedit – HKCU\Software\Microsoft\WindowsNT\CurrentVersion\Windows DWORD: 		LegacyDefaultPrinterMode  Value 1
+
+
+
+
+
