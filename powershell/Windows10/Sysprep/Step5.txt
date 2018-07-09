@@ -57,7 +57,8 @@ Task Scheduler – Turnoff/Disable
 	Customer Experience
 	Application Experience
 
-
+Clean
+%systemroot%\system32\cmd.exe /c Cleanmgr /sagerun:65535
 
 Seal
-sysprep.exe /generalize /oobe /shutdown /unattend:C:\customize\customize.xml
+sysprep.exe /generalize /oobe /shutdown /unattend:C:\windows\system32\sysprep\unattended.xml
