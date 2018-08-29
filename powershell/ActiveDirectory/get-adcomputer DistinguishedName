@@ -1,2 +1,0 @@
-get-adcomputer "COMPUTERNAME" -properties "DistinguishedName" | select -Property DistinguishedName
-//get-adcomputer "COMPUTERNAME" -properties "DistinguishedName" | select -Property DistinguishedName | Out-File -FilePath "D:\DistinguishedNames.txt" -Append -NoClobber
