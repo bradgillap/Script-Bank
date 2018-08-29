@@ -4,3 +4,6 @@ get-adcomputer "vic-st-01" -properties "DistinguishedName" | select -ExpandPrope
 
 // with tables and spacing
 get-adcomputer "vic-st-01" -properties "DistinguishedName" | select -Property DistinguishedName | format-table -HideTableHeaders | Out-File -FilePath "D:\DistinguishedNames.txt" -Append -NoClobber
+
+//get all computers export csv
+get-adcomputer -Filter * -properties "DistinguishedName" | export-csv -path "D:\DistinguishedNames.csv"
