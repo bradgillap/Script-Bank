@@ -7,3 +7,6 @@ get-adcomputer "vic-st-01" -properties "DistinguishedName" | select -Property Di
 
 //get all computers export csv
 get-adcomputer -Filter * -properties "DistinguishedName" | export-csv -path "D:\DistinguishedNames.csv"
+
+//set user to primary computer
+Set-aduser <user name> -add @{‘msDS-PrimaryComputer’=(get-adcomputer <computer name>).distinguishedname}
