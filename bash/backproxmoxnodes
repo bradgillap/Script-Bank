@@ -1,0 +1,110 @@
+====== Day Week Month Bash Proxmox Node conf Backup Script ======
+
+Create Folders
+
+<code bash>
+mkdir -p /root/backup
+mkdir -p /root/backup/daily
+mkdir -p /root/backup/weekly
+mkdir -p /root/backup/monthly
+</code>
+
+===== Create Day Script =====
+
+Saves a filename like backup-$hostname-2022-07-23.tar.gz
+
+Create the script
+
+<code bash>
+nano /root/backup/backup-daily.sh
+</code>
+
+
+<code bash>
+tar -zcf /root/backup/daily/backup-$(uname -n)-$(date +%Y-%m-%d).tar.gz -C /etc/ pve
+find /root/backup/daily/* -mtime +7 -delete
+</code>
+
+Make it executable
+
+<code bash>
+chmod +x backup-daily.sh
+</code>
+
+===== Week Script =====
+
+Saves a filename like backup-$hostname-2022-07-23.tar.gz
+
+Create the script
+
+<code bash>
+nano /root/backup/backup-weekly.sh
+</code>
+
+<code bash>
+tar -zcf /root/backup/weekly/backup-$(uname -n)-$(date +%Y-%m-%d).tar.gz -C /etc/ pve
+find /root/backup/weekly/* -mtime +31 -delete
+</code>
+
+Make it executable
+
+<code bash>
+chmod +x backup-weekly.sh
+</code>
+
+===== Month Script =====
+
+Saves a filename like backup-$hostname-2022-07-23.tar.gz
+
+Create the script
+
+<code bash>
+nano /root/backup/backup-monthly.sh
+</code>
+
+<code bash>
+tar -zcf /root/backup/monthly/backup-$(uname -n)-$(date +%Y-%m-%d).tar.gz -C /etc/ pve
+find /root/backup/monthly/* -mtime +365 -delete
+</code>
+
+Make it executable
+
+<code bash>
+chmod +x backup-monthly.sh
+</code>
+
+===== Setup CRON Task =====
+
+
+  * Execute the daily backup script everyday at 12:15 AM
+  * Execute the weekly backup script every Monday at 12:30 AM
+  * Execute the monthly backup script the 1st of every month at 12:45 AM
+
+As root
+<code bash>
+crontab -e
+</code>
+
+<code bash>
+15 0 * * * sh /root/backup/backup-daily.sh
+30 0 * * 1 sh /root/backup/backup-weekly.sh
+45 0 1 * * sh /root/backup/backup-monthly.sh
+</code>
+
+
+===== RSYNC Backup to External Mount or SSH =====
+
+
+==== RSYNC CRON Task ====
+
+As root
+<code bash>
+crontab -e
+</code>
+
+
+Mirrors the contents of backups on the destination. May be different for NFS or depending on remote mount. Just an example.
+
+<code bash>
+0 2 * * * rsync -a --delete /root/backup/ root@192.168.100.x:/path/to/remote/backups/
+</code>
