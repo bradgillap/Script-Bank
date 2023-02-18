@@ -10,7 +10,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Create the main form and set its properties
 $form = New-Object System.Windows.Forms.Form
 $form.Text = 'Luhn Mod 10 Validation'
-$form.Width = 540
+$form.Width = 560
 $form.Height = 640
 
 # Create a label for the text box
@@ -45,6 +45,24 @@ $resultsTextBox.Location = New-Object System.Drawing.Point(260, 50)
 $resultsTextBox.Size = New-Object System.Drawing.Size(240, 500)
 $resultsTextBox.ReadOnly = $true
 $form.Controls.Add($resultsTextBox)
+
+# Create a button that opens a dialogue to choose a file of barcodes
+$fileButton = New-Object System.Windows.Forms.Button
+$fileButton.Location = New-Object System.Drawing.Point(10,560)
+$fileButton.Size = New-Object System.Drawing.Size(60,30)
+$fileButton.Text = 'Open'
+$form.Controls.Add($fileButton)
+
+$openFileDialog = New-Object System.Windows.Forms.OpenFileDialog
+$openFileDialog.Filter = 'txt files (*.txt)|*.txt'
+
+# Add a Click event handler for the Open button
+$fileButton.Add_Click({
+    if ($openFileDialog.ShowDialog() -eq 'OK') {
+        $file = $openFileDialog.FileName
+        $textBox.Text = Get-Content $file -Raw
+    }
+})
 
 # Create a button to validate the input and set its properties
 $button = New-Object System.Windows.Forms.Button
