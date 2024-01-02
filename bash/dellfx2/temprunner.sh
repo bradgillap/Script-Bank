@@ -5,7 +5,7 @@
 # Restart the script every minute or so with systemctl to again, check the temperatures and make a decision whether to force the fanspeed to 15% or use Dells built in fan algorithm (25% + Algorithm).
 # Run from your primary hypervisor R630/640 server.
 
-# If for any reason you want to switch back to algorithmic fan mode, run the following command on the cli of the CMC or reboot it: racadm getfaninfo -p glacier -a
+# If for any reason you want to switch back to algorithmic fan mode, disable this script and run the following command on the cli of the CMC or reboot it: racadm getfaninfo -p glacier -a
 
 ###### Editable Configuration Options below this line ######  
 
