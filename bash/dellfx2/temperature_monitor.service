@@ -1,0 +1,11 @@
+# temperature_monitor.service
+[Unit]
+Description=Temperature Monitor Service
+
+[Service]
+ExecStart=/opt/temp-monitor/temp-monitor.sh
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=default.target
