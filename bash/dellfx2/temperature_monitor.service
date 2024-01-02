@@ -3,7 +3,7 @@
 Description=Temperature Monitor Service
 
 [Service]
-ExecStart=/opt/temp-monitor/temp-monitor.sh
+ExecStart=/opt/temp-monitor/temprunner.sh
 Restart=always
 RestartSec=60
 
