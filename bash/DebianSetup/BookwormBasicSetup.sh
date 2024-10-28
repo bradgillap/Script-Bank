@@ -9,6 +9,7 @@
 # Enables permit root login for sshd
 # enables unattended upgrades to allow automatic install of security updates
 # Do not recommend permitting root login on Internet exposed machines. For that go through further hardening.
+# use BookwormBasicSetup.sh --rollback to restore configuration files. 
 
 # Set up logging
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
