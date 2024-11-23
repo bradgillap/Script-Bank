@@ -1,34 +1,71 @@
 #!/bin/bash
 
-#This script will take your public key, create .ssh and authorized keys if it does not exist and add your key to each LXC on the server. 
+# This script adds your public SSH key to all LXC containers on a Proxmox node.
 
-# Path to your public key, make sure your public key is on the host server PVE server in the .ssh folder. 
+# Path to your default public key
 PUB_KEY_PATH="$HOME/.ssh/id_rsa_mykey.pub"
 
-# Read the public key into a variable
-PUB_KEY=$(cat $PUB_KEY_PATH)
+# Check if jq is installed
+if ! command -v jq &> /dev/null; then
+    echo "jq is not installed. This script requires jq to process JSON output."
+    if command -v whiptail &> /dev/null; then
+        whiptail --title "Missing Dependency" --msgbox "The utility 'jq' is required. Installing it now..." 8 50
+    fi
+    apt update && apt install -y jq
+    if ! command -v jq &> /dev/null; then
+        echo "Failed to install jq. Please install it manually and rerun the script."
+        exit 1
+    fi
+fi
 
-# Get the Proxmox node's hostname (this will work because the script runs on the Proxmox host)
+# Check if the public key file exists
+if [ ! -f "$PUB_KEY_PATH" ]; then
+    if command -v whiptail &> /dev/null; then
+        PUB_KEY=$(whiptail --title "SSH Public Key Not Found" --inputbox "The public key file ($PUB_KEY_PATH) was not found. Please paste your SSH public key below:" 10 70 3>&1 1>&2 2>&3)
+        EXIT_STATUS=$?
+        if [ $EXIT_STATUS -ne 0 ]; then
+            echo "Public key input canceled. Exiting."
+            exit 1
+        fi
+    else
+        echo "Error: Public key file not found at $PUB_KEY_PATH, and whiptail is not installed for interactive input."
+        exit 1
+    fi
+else
+    PUB_KEY=$(cat "$PUB_KEY_PATH")
+fi
+
+if [ -z "$PUB_KEY" ]; then
+    echo "Error: Public key is empty. Check the input or file content."
+    exit 1
+fi
+
+# Get the Proxmox node's hostname
 NODE_NAME=$(hostname)
 
 # Get the list of all LXC container IDs on the node
-CONTAINERS=$(pvesh get /nodes/$NODE_NAME/lxc | grep -o '"vmid":[0-9]*' | cut -d: -f2)
+CONTAINERS=$(pvesh get /nodes/$NODE_NAME/lxc --output-format json | jq -r '.[].vmid')
+
+if [ -z "$CONTAINERS" ]; then
+    echo "No LXC containers found on node $NODE_NAME."
+    exit 1
+fi
 
 # Loop through each container ID
 for CTID in $CONTAINERS; do
-    echo "Checking container $CTID"
+    echo "Processing container $CTID"
 
-    # Ensure the .ssh directory exists
-    pct exec $CTID -- mkdir -p /root/.ssh
+    # Ensure the container is accessible
+    if ! pct exec $CTID -- mkdir -p /root/.ssh; then
+        echo "Failed to access container $CTID. Skipping..."
+        continue
+    fi
 
-    # Ensure the authorized_keys file exists (it won't overwrite the file if it exists)
+    # Ensure the authorized_keys file exists
     pct exec $CTID -- touch /root/.ssh/authorized_keys
 
     # Check if the public key is already in the authorized_keys file
-    KEY_EXISTS=$(pct exec $CTID -- grep -F "$PUB_KEY" /root/.ssh/authorized_keys)
-
-    if [ -z "$KEY_EXISTS" ]; then
-        # If the key doesn't exist, add it
+    if ! pct exec $CTID -- grep -Fxq "$PUB_KEY" /root/.ssh/authorized_keys; then
         echo "Adding SSH key to container $CTID"
         pct exec $CTID -- bash -c "echo '$PUB_KEY' >> /root/.ssh/authorized_keys"
         pct exec $CTID -- chmod 600 /root/.ssh/authorized_keys
