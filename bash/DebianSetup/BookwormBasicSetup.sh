@@ -68,10 +68,10 @@ fi
 
 # Call backup function
 backup_files
-
+sudo apt update
 # Install necessary packages
 log "Starting package installation..."
-for pkg in sudo curl wget2 fail2ban unattended-upgrades apt-listchanges ncdu; do
+for pkg in sudo curl wget2 htop fail2ban unattended-upgrades apt-listchanges ncdu; do
     if ! dpkg -l | grep -qw "$pkg"; then
         apt install -y "$pkg"
         log "Installed $pkg."
