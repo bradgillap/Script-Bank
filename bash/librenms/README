@@ -1,19 +1,24 @@
-LibreNMS RAM Disk Setup and Backup
+# LibreNMS RAM Disk Setup and Backup
+
 This repository contains scripts and services to optimize LibreNMS by using a RAM disk for high-write directories (rrd and logs). This approach reduces SSD wear while ensuring data integrity through automated backups and restores.
 
-Overview
+## Overview
+
 The setup includes the following components:
 
-Scripts:
+### Scripts:
 
 setup-librenms-ramdisk.sh: Creates necessary directories on the RAM disk, sets permissions, and creates symbolic links.
 librenms-ramdisk.sh: Handles data backup and restore operations between the RAM disk and persistent storage.
-Systemd Services:
+
+### Systemd Services:
 
 librenms-ramdisk-setup.service: Sets up the RAM disk and directories during boot.
 librenms-ramdisk-restore.service: Restores data from persistent storage to the RAM disk after setup.
 librenms-ramdisk-backup.service: Backs up data from the RAM disk to persistent storage during shutdown.
-Installation
+
+## Installation
+
 1. Clone the Repository
 bash
 Copy code
