@@ -56,9 +56,9 @@ sudo systemctl enable librenms-ramdisk-backup.service
 
 ### Service Descriptions
 
-librenms-ramdisk-setup.service
-Runs during system boot.
-Creates the rrd and logs directories on the RAM disk, sets ownership, and creates symbolic links in /opt/librenms.
+1. librenms-ramdisk-setup.service
+  - Runs during system boot.
+  - Creates the rrd and logs directories on the RAM disk, sets ownership, and creates symbolic links in /opt/librenms.
 
 librenms-ramdisk-restore.service
 Runs after librenms-ramdisk-setup.service.
