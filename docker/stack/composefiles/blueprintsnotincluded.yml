@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  bpni:
+    image: racefpv/bpni:latest
+    container_name: bpni
+    build: .
+    environment:
+      - ENV_NAME=development
+      - BROWSE_INCREMENT=100
+      - DB_URI=mongodb://mongodb-bpni:27017/blueprintnotincluded  # Use service name for DB URI
+      - JWT_SECRET=secret
+      - CAPTCHA_SITE=localhost
+      - CAPTCHA_SECRET=secret
+      - MAILJET_API_KEY=produseonly
+      - MAILJET_SECRET_KEY=produseonly
+      - MAILJET_FROM_EMAIL=help@blueprintnotincluded.org
+    ports:
+      - "3000:3000" # important note. Was not able to get this working at all if port 3000 is changed on the host side YMMV.
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - bpni-network
+  mongodb-bpni:
+    image: mongo:4.2
+    container_name: mongodb-bpni
+    environment:
+      - "MONGO_INITDB_DATABASE=blueprintnotincluded"
+    volumes:
+      - /mnt/dockerdata/blueprintnotincluded/mongodb:/data/db  # Named volume for persistent storage
+      - ./mongo/docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro #file required wherever you launch compose files from https://github.com/Sinetheta/blueprintnotincluded/blob/master/mongo/docker-entrypoint-initdb.d/mongo-init.js
+    ports:
+      - "27017:27017"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - bpni-network
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog-bpni
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - bpni-network
+# Define volumes and networks
+volumes:
+  mongodb_data:
+    driver: local
+networks:
+  bpni-network:
+    driver: overlay
