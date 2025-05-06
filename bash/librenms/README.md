@@ -6,6 +6,18 @@ This repository contains scripts and services to optimize LibreNMS by using a RA
 
 The setup includes the following components:
 
+### Locations of Note
+
+The paths we will be replacing with ramdisk.
+
+/opt/librenms/rrd
+/opt/librenms/logs
+
+The paths where the data will be stored after.
+
+/mnt/ramdisk/rrd
+/mnt/ramdisk/logs
+
 ### Scripts:
 
 setup-librenms-ramdisk.sh: Creates necessary directories on the RAM disk, sets permissions, and creates symbolic links.
@@ -18,6 +30,8 @@ librenms-ramdisk.sh: Handles data backup and restore operations between the RAM 
 - librenms-ramdisk-backup.service: Backs up data from the RAM disk to persistent storage during shutdown.
 
 ## Installation
+
+Before you begin, move your rrd and log folders out of the /opt/librenms folder to somewhere else temporarily. The reason is that the symbolic links will be created on the ramdisk in this step and if these static folders already exist within the /opt/librenms then it'll cause issues. We want librenms to look at the symbolic links instead for their data.
 
 1. Clone the Repository
 Copy code from directory
