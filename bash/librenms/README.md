@@ -10,13 +10,13 @@ The setup includes the following components:
 
 The paths we will be replacing with ramdisk.
 
-/opt/librenms/rrd
-/opt/librenms/logs
+  - /opt/librenms/rrd
+  - /opt/librenms/logs
 
 The paths where the data will be stored after.
 
-/mnt/ramdisk/rrd
-/mnt/ramdisk/logs
+  - /mnt/ramdisk/rrd
+  - /mnt/ramdisk/logs
 
 ### Scripts:
 
