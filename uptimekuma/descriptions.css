@@ -1,0 +1,122 @@
+        /*
+         * Color Palette:
+         * Deep Navy (#0d1b2a) - Primary background, a bit softer than pure black.
+         * Cyan (#00aaff) - A bright, cool accent color for buttons and links.
+         * Silver (#c0c0c0) - A muted, elegant color for text and inactive elements.
+         * Dark Slate Grey (#2e4053) - For card backgrounds, adding depth.
+         */
+
+        .status-container {
+            background-color: transparent;
+            border-radius: 0.2rem;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1.0rem;
+            color: #c0c0c0; /* A slightly warmer grey */
+        }
+
+        .status-header {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #c0c0c0; /* Match the new text color */
+            margin-bottom: 0.5rem;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 0.75rem; /* Increase gap for better spacing */
+        }
+
+        .status-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 2px solid #00aaff; /* A more visible border with the new accent color */
+            border-radius: 9999px;
+            background-color: #1a2a3a; /* Solid background for visibility */
+            color: #00aaff; /* Use the accent color for the text */
+            font-weight: 600; /* Bolder text for more impact */
+            text-decoration: none;
+            transition: all 0.3s ease-in-out; /* Slower transition for a smoother feel */
+            box-shadow: 0 0 5px rgba(0, 170, 255, 0.5); /* Add a subtle glow on hover */
+        }
+
+        .status-button:hover {
+            background-color: #00aaff; /* Fill the button on hover */
+            color: #FFFFFFF; /* Use the dark background color for the text on hover */
+            transform: translateY(-2px); /* Lift the button slightly */
+            box-shadow: 0 4px 8px rgba(0, 170, 255, 0.4); /* Stronger glow on hover */
+        }
+
+        .status-table-container {
+            background-color: #0d1b2a;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            /* Make this container a bit more flexible to override parent width */
+            width: 100%;
+            overflow: hidden;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1rem;
+            color: #c0c0c0;
+        }
+
+        .status-table {
+            /* Set table width to 100% of its container */
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .status-table-header {
+            background-color: #1a2a3a; /* A slightly lighter shade for contrast */
+            border-bottom: 1px solid #3c4c5c;
+        }
+
+        .table-header-cell {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #c0c0c0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-table-body {
+            border-bottom: 1px solid #3c4c5c;
+        }
+
+        .status-table-row {
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .status-table-row:hover {
+            background-color: #1a2a3a; /* Match header color for consistent hover effect */
+        }
+
+        .table-cell {
+            padding: 1rem 1rem;
+            white-space: normal; /* Allow text to wrap for better readability */
+            font-size: 0.875rem;
+            color: #c0c0c0;
+            vertical-align: top;
+        }
+
+        /* Specific styling for the table text within a list or link */
+        .table-cell a {
+            color: #00aaff; /* Apply the accent color to links */
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .table-cell a:hover {
+            color: #00c8ff; /* A slightly lighter shade on hover */
+            text-decoration: underline; /* Underline on hover for better visibility */
+        }
+
+        /* Styling for the emoji icon */
+        .text-xl {
+            font-size: 1.5rem; /* Larger emoji for more visual impact */
+        }
