@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Your Semaphore Public Key
-PUB_KEY="redacted"
+PUB_KEY="..."
 
 # Adjust range as needed for your IDs
-for id in {113..113}; do
+for id in {329..329}; do
   # Check if the container exists and is running
   status=$(pct status $id 2>/dev/null)
   if [[ $? -ne 0 || "$status" != *"status: running"* ]]; then
@@ -79,3 +79,8 @@ for id in {113..113}; do
       /etc/init.d/\$SSH_SERVICE restart
     elif command -v systemctl >/dev/null 2>&1; then
       systemctl restart \$SSH_SERVICE
+    fi
+    
+    echo 'LXC $id Onboarding Complete!'
+  "
+done
